@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{%  load static %}
+
+{% block content %}
+    <section class="dashboard">
+
+        <!--PRIMER METRICA-->
+        <div class="card">
+            <h2>Tiempo de atención por Operador</h2>
+            <div class="chart-container">
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+
+
+        <!--SEGUNDA METRICA-->               
+        <div class="card">
+            <h2>Operadores en Línea</h2>
+            <span id="operadores-activos" class="numero-grande">{{ active_calls }}</span>
+            <div class="comparacion">
+                <span class="texto">Operadores Disponibles: </span>
+                <span id="operadores-disponibles" class="cambio">{{ line_operators }}</span>
+            </div>
+        </div>
+
+        <!--TERCERA METRICA-->
+        <div class="card">
+            <h2>Número de Abandonos</h2>
+            <span id="numero-abandonos" class="numero-grande"></span>
+            <div class="comparacion">
+                <span id="flecha" class="flecha"></span>
+                <span id="diferencia" class="cambio"></span>
+                <span class="texto">(vs. ayer)</span>
+            </div>
+            <!-- Círculo de carga
+            <div class="loader"> 
+                <svg viewBox="25 25 50 50">
+                    <circle r="20" cy="50" cx="50"></circle>
+                </svg>
+            </div> -->             
+        </div>
+
+        <!--CUARTA METRICA-->
+        <div class="card card-grande">
+            <h2>Tiempo de Espera en Fila</h2>
+            <div class="chart-container chart-espera">
+                <canvas id="graficaEspera"></canvas>
+            </div>
+        </div>
+
+        <!--QUINTA METRICA-->
+        <div class=""></div>
+
+    </section>
+
+    <!-- Carga la biblioteca Chart.js --- Content Delivery Network -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Script de Chart.js-->
+    <script src="{% static 'js/chart-script.js' %}"></script>
+
+{% endblock %}
